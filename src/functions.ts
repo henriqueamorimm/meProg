@@ -1,62 +1,61 @@
-const readline = require('node:readline');
-const { stdin: input, stdout: output } = require('node:process');
+const readline = require("node:readline");
+const { stdin: input, stdout: output } = require("node:process");
 const rl = readline.createInterface({ input, output });
-const express = require('express');
-
-function Mostre(texto) {
-    console.log(texto);
+import express, { Request, Response } from "express";
+import server from "./server";
+function Mostre(texto: any) {
+  console.log(texto);
 }
-function Somar(firstNumber, secondNumber){
- const result = firstNumber + secondNumber;
- console.log(result)
- if(!secondNumber || !firstNumber){
+function Somar(firstNumber: number, secondNumber: number) {
+  const result = firstNumber + secondNumber;
+  console.log(result);
+  if (!secondNumber || !firstNumber) {
     console.log("Inclua todos os parametros para somar.");
- }
-}
-function criarPaginaLocal(porta,rota, mensagem) {
-    const app = express();
-
-    app.get(rota, (req, res) => {
-        res.send(`<h3 style="font-family: Arial">Utilizando o sistema MeProg</h3><h1>${mensagem}</h1>`);
-    });
-
-    app.listen(porta, () => {
-        console.log(`Servidor aberto em http://localhost:${porta}${rota}`);
-    });
-    if(!porta || !mensagem){
-        console.log("Para criar um servidor local, preencha a porta, a rota e a mensagem! (Use / para rota padrao)")
-    }
-}
-function Dividir(firstNumber, secondNumber){
-    const result = firstNumber / secondNumber;
-    console.log(result);
-    if(!secondNumber || !firstNumber){
-        console.log("Inclua todos os parametros para dividir.");
-     }
-}
-function createQuestion(question, backmessage){
-    rl.question(question, (answer) => {
-        console.log(backmessage);
-      
-        rl.close();
-      });
-      if(!question){
-        console.log("Inclua todos os parametros para criar uma pergunta");
-      }
+  }
 }
 
-
-function Multiplicar(firstNumber, secondNumber){
-    const result = firstNumber * secondNumber;
-    console.log(result);
-    if(!secondNumber || !firstNumber){
-        console.log("Inclua todos os parametros para multiplicar.");
-     }
+function compararNumber(firstNumber: number, secondNumber: number) {
+  const resultMaior = firstNumber > secondNumber;
+  if (resultMaior) {
+    console.log(`${firstNumber} é maior que ${secondNumber}`);
+  } else {
+    console.log(`${secondNumber} é maior que ${firstNumber}`);
+  }
+  if (!firstNumber) {
+    console.log("Preencha os parametros corretamente.");
+  }
 }
-module.exports = {
-    Mostre: Mostre,
-    Somar: Somar,
-    Dividir: Dividir,
-    Perguntar: createQuestion,
-    CriarPagina: criarPaginaLocal
+function Dividir(firstNumber: number, secondNumber: number) {
+  const result = firstNumber / secondNumber;
+  console.log(result);
+  if (!secondNumber || !firstNumber) {
+    console.log("Inclua todos os parametros para dividir.");
+  }
+}
+function Perguntar(question: string, backmessage: string, callback: any) {
+  rl.question(question, (answer: any) => {
+    console.log(backmessage);
+    callback(answer);
+  });
+
+  if (!question) {
+    console.log("Inclua todos os parametros para criar uma pergunta");
+  }
+}
+
+function Multiplicar(firstNumber: number, secondNumber: number) {
+  const result = firstNumber * secondNumber;
+  console.log(result);
+  if (!secondNumber || !firstNumber) {
+    console.log("Inclua todos os parametros para multiplicar.");
+  }
+}
+export {
+  Mostre,
+  Somar,
+  Multiplicar,
+  Dividir,
+  Perguntar,
+  compararNumber,
+  server,
 };

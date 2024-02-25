@@ -1,3 +1,12 @@
-const me = require('./src/functions.ts');
-
-me.Perguntar("Oi, voce e legal?", "Obrigado por responder");
+import * as me from "./src/functions";
+const server = new me.server(2308);
+import { Request, Response } from "express";
+me.compararNumber(90, 999);
+server.addRoute({
+  method: "GET",
+  route: "/",
+  response: (req: Request, res: Response) => {
+    res.send("Olá mundo!");
+  },
+});
+server.build();
