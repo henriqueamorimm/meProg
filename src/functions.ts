@@ -43,6 +43,9 @@ function Perguntar(question: string, backmessage: string, callback: any) {
   }
 }
 
+
+
+
 function Multiplicar(firstNumber: number, secondNumber: number) {
   const result = firstNumber * secondNumber;
   console.log(result);
