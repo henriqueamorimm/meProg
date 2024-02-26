@@ -21,7 +21,7 @@ npm i
 Ótimo dev! Você está quase lá! Agora apenas
 execute o comando:
 ````
-npx ts-dev-node index.ts 
+npx ts-node-dev index.ts 
 ````
 
 ## Extra:
