@@ -25,6 +25,11 @@ function compararNumber(firstNumber: number, secondNumber: number) {
     console.log("Preencha os parametros corretamente.");
   }
 }
+
+function Subtrair(firstNumber: number, secondNumber: number) {
+  const result = firstNumber - secondNumber;
+  console.log(result);
+}
 function Dividir(firstNumber: number, secondNumber: number) {
   const result = firstNumber / secondNumber;
   console.log(result);
@@ -43,9 +48,6 @@ function Perguntar(question: string, backmessage: string, callback: any) {
   }
 }
 
-
-
-
 function Multiplicar(firstNumber: number, secondNumber: number) {
   const result = firstNumber * secondNumber;
   console.log(result);
@@ -59,6 +61,7 @@ export {
   Multiplicar,
   Dividir,
   Perguntar,
+  Subtrair,
   compararNumber,
   server,
 };

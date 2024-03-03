@@ -31,7 +31,6 @@ export default class WebServer {
     });
 
     app.listen(this.port, () => {
-      // server running
       console.log("Servidor rodando em http://localhost:" + this.port);
     });
   }
