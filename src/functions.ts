@@ -47,6 +47,11 @@ function Perguntar(question: string, backmessage: string, callback: any) {
     console.log("Inclua todos os parametros para criar uma pergunta");
   }
 }
+function NumeroAleatorio(numero: number): number {
+  const random = Math.floor(Math.random() * numero);
+  console.log(random);
+  return random;
+}
 
 function Multiplicar(firstNumber: number, secondNumber: number) {
   const result = firstNumber * secondNumber;
@@ -62,6 +67,7 @@ export {
   Dividir,
   Perguntar,
   Subtrair,
+  NumeroAleatorio,
   compararNumber,
   server,
 };
