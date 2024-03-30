@@ -3,6 +3,7 @@ const { stdin: input, stdout: output } = require("node:process");
 const rl = readline.createInterface({ input, output });
 import express, { Request, Response } from "express";
 import server from "./server";
+import axios from "axios";
 function Mostre(texto: any) {
   console.log(texto);
 }
@@ -59,13 +60,26 @@ function Multiplicar(firstNumber: number, secondNumber: number) {
   if (!secondNumber || !firstNumber) {
     console.log("Inclua todos os parametros para multiplicar.");
   }
+
+
+}
+
+ function Post(url: string){
+  const response = axios.post(url);
+  return response
+}
+function Get(url: string){
+  const response = axios.get(url);
+  return response
 }
 export {
   Mostre,
   Somar,
+  Post,
   Multiplicar,
   Dividir,
   Perguntar,
+  Get,
   Subtrair,
   NumeroAleatorio,
   compararNumber,
